@@ -10,17 +10,18 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
-var oneDay = 86400000;
+var oneYear = 86400000 * 365;
 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.engine('html', require('ejs').renderFile);
-app.use(express.compress());
+
 app.use(express.favicon());
-app.use(express.staticCache());
-app.use(express.static(path.join(__dirname, 'public'), {maxAge: oneDay}));
+app.use(express.compress());
+app.use(express.static( path.join(__dirname, 'public'), { maxAge: oneYear }));
+
 app.use(express.logger('dev'));
 
 app.use(express.bodyParser());
