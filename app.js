@@ -26,6 +26,9 @@ var authenticate = function(username, password, done) {
 	return done(null, false, { message: "Invalid Credentials"} );
 }
 
+var authSuccess = function( req, res) {
+	res.send(200, {id: req.body.username})
+}
 
 passport.use( new LocalStrategy(authenticate) );
 
@@ -55,8 +58,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.post('/login', passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local'), authSuccess);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
