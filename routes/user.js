@@ -4,5 +4,6 @@
  */
 
 exports.list = function(req, res){
-  res.send("respond with a resource");
+	console.log("Got to list")
+  	res.send(200, {msg: "Hey there!"});
 };
