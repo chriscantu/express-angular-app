@@ -15,19 +15,27 @@ var app = express();
 var oneYear = 86400000 * 365;
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user._id);
+});
+
+passport.deserializeUser( function(user, done) {
+    done(null, user)
 });
 
 var authenticate = function(username, password, done) {
 	if (username == "Chris" && password == "qwerty") {
-		return done(null, {id: 'mongoid'} );
+		return done(null, {'_id': 'mongoid'} );
 	};
 
 	return done(null, false, { message: "Invalid Credentials"} );
 }
 
-var authSuccess = function( req, res) {
-	res.send(200, {id: req.body.username})
+var authSuccess = function( req, res ) {
+	res.send(200, {'_id': req.body.username})
+}
+
+var isAuthenticated = function( req, res, next ) {
+    ( req.isAuthenticated() ) ? next() : res.redirect(401, '/');
 }
 
 passport.use( new LocalStrategy(authenticate) );
@@ -47,6 +55,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
+app.use(express.session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
@@ -57,7 +66,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/users', isAuthenticated, user.list);
 app.post('/login', passport.authenticate('local'), authSuccess);
 
 http.createServer(app).listen(app.get('port'), function(){
