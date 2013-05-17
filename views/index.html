@@ -1,9 +1,17 @@
-<html>
+<html ng-app>
 	<head>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 		<script type="text/javascript" src="/javascripts/app.js"></script>
 	</head>
-	<body ng-app="test">
+	<body>
+		<form ng-controller="LoginCtrl" ng-submit="submit()">
+			<label>Username:</label>
+			<input type="text" ng-model="username" name="username"/>
+			<label>Password:</label>
+			<input type="password" ng-model="password" name="password" />			
+			<input type="submit" value="Submit"/>
+		</form>
+
 		<div ng-controller="ListCtrl">
 			Hello {{name}}
 		</div>
