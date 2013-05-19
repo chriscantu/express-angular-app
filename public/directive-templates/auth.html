@@ -1,7 +1,10 @@
 <div>
 	<ul class="nav pull-right">
-		<li >
+		<li ng-hide="auth.authenticated" class="active">
 			<a ng-click="loggedIn =! loggedIn" class="pull-right" href="#" ng-model="loggedIn">Login</a>			
+		</li>
+		<li ng-show="auth.authenticated" class="active">
+			<a ng-click="logout()" class="pull-right" href="#">Logout: {{user.firstName}}</a>
 		</li>
 	</ul>	
 	<div modal="loggedIn" close="loggedIn = false" options="{ backdropFade:true, dialogFade:true}">
@@ -10,10 +13,11 @@
 			<h4>Login</h4>
 		</div>
 		<div class="modal-body">
+			<div ng-show="auth.invalidLogin==true" class="alert alert-danger fade in">Invalid Username / Password</div>
 			<form  ng-submit="authenticate()" class="form-inline">
 				<input type="text" ng-model="user.username" name="username" class="span2" placeholder="username" />
 				<input type="password" ng-model="user.password" name="password"  placeholder="password" class="span2"/>			
-				<button type="submit" class="btn btn-primary">Sign In</button>
+				<button type="submit" class="btn btn-primary pull-right">Sign In</button>				
 			</form>
 		</div>
 	</div>
