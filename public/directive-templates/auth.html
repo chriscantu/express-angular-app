@@ -1,12 +1,19 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class='navbar-inner'>
-		<div class="container">
-		<a class="brand" href="#">Express</a>
-			<form class="navbar-form pull-right" ng-submit="authenticate()">
+<div>
+	<ul class="nav pull-right">
+		<li >
+			<a ng-click="loggedIn =! loggedIn" class="pull-right" href="#" ng-model="loggedIn">Login</a>			
+		</li>
+	</ul>	
+	<div modal="loggedIn" close="loggedIn = false" options="{ backdropFade:true, dialogFade:true}">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="loggedIn=false">&times;</button>
+			<h4>Login</h4>
+		</div>
+		<div class="modal-body">
+			<form  ng-submit="authenticate()" class="form-inline">
 				<input type="text" ng-model="user.username" name="username" class="span2" placeholder="username" />
 				<input type="password" ng-model="user.password" name="password"  placeholder="password" class="span2"/>			
-				<button type="submit" class="btn">Submit</button>
-				<button type="button" class="btn" ng-click="test()">Test Auth</button>
+				<button type="submit" class="btn btn-primary">Sign In</button>
 			</form>
 		</div>
 	</div>

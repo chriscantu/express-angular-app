@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('light', ['services', 'directives']);
+angular.module('light', ['ui.bootstrap','services', 'directives']);
 
 function ListCtrl($scope) {
-	$scope.name = "Chris"
+	$scope.name = "Chris"	
 }
 
 ListCtrl.$inject=['$scope'];
