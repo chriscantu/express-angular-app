@@ -1,8 +1,13 @@
-<form ng-submit="authenticate()">
-	<label>Username:</label>
-	<input type="text" ng-model="user.username" name="username"/>
-	<label>Password:</label>
-	<input type="password" ng-model="user.password" name="password" />			
-	<input type="submit" value="Submit"/>
-	<input type="button" value="Test Auth" ng-click="test()">
-</form>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class='navbar-inner'>
+		<div class="container">
+		<a class="brand" href="#">Express</a>
+			<form class="navbar-form pull-right" ng-submit="authenticate()">
+				<input type="text" ng-model="user.username" name="username" class="span2" placeholder="username" />
+				<input type="password" ng-model="user.password" name="password"  placeholder="password" class="span2"/>			
+				<button type="submit" class="btn">Submit</button>
+				<button type="button" class="btn" ng-click="test()">Test Auth</button>
+			</form>
+		</div>
+	</div>
+</div>
