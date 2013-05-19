@@ -23,19 +23,24 @@ passport.deserializeUser( function(user, done) {
 });
 
 var authenticate = function(username, password, done) {
-	if (username == "Chris" && password == "qwerty") {
-		return done(null, {'_id': 'mongoid'} );
-	};
+  	if (username == "Chris" && password == "qwerty") {
+    		return done(null, {'_id': 'mongoid'} );
+  	};
 
-	return done(null, false, { message: "Invalid Credentials"} );
+  	return done(null, false, { message: "Invalid Credentials"} );
 }
 
 var authSuccess = function( req, res ) {
-	res.send(200, {'_id': req.body.username})
+	 res.send(200, {'_id': 'myid', firstName: req.body.username});
 }
 
 var isAuthenticated = function( req, res, next ) {
     ( req.isAuthenticated() ) ? next() : res.redirect(401, '/');
+}
+
+var logout = function( req, res ) {
+    req.logout();
+    res.send(200, "Logged out!");
 }
 
 passport.use( new LocalStrategy(authenticate) );
@@ -68,6 +73,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', isAuthenticated, user.list);
 app.post('/login', passport.authenticate('local'), authSuccess);
+app.get('/logout', logout);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

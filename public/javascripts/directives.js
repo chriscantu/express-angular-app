@@ -15,13 +15,19 @@ angular.module('directives', [])
 						function(data){
 							scope.auth = { invalidLogin: false, authenticated: true};
 							scope.loggedIn = false;
-							scope.user.firstName = data._id;
+							scope.user.firstName = data.firstName;
 						}, 
 						function(){
 							scope.auth = { invalidLogin : true,  authenticated : false };
 						}
 					);
 					this.user.password = '';
+				}
+
+				scope.logout = function() {
+					User.logout({}, function(){
+						scope.auth.authenticated = false;
+					})
 				}
 			}
 		}
