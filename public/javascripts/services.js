@@ -5,7 +5,8 @@ angular.module('services', ['ngResource'])
 		return $resource('/:action', 
 			{},
 			{
-				login: { method: 'POST', isArray: false, params: { action: 'login' } }
+				login: { method: 'POST', isArray: false, params: { action: 'login' } },
+				list : { method: 'GET', isArray: false, params: { action: 'users'} }
 			}
 		);
 	});
