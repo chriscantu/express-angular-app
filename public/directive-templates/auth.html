@@ -1,15 +1,15 @@
 <div>
 	<ul class="nav pull-right">
-		<li ng-hide="auth.authenticated" class="active">
-			<a ng-click="loggedIn =! loggedIn" class="pull-right" href="#" ng-model="loggedIn">Login</a>			
+		<li ng-hide="user.loggedIn" class="active">
+			<a ng-click="auth.authenticate = true" class="pull-right" href="#" ng-model="auth.authenticate">Login</a>
 		</li>
-		<li ng-show="auth.authenticated" class="active">
-			<a ng-click="logout()" class="pull-right" href="#">Logout: {{user.firstName}}</a>
+		<li ng-show="user.loggedIn" class="active">
+			<a ng-click="logout()" class="pull-right" href="#">Logout</a>
 		</li>
 	</ul>	
-	<div modal="loggedIn" close="loggedIn = false" options="{ backdropFade:true, dialogFade:true}">
+	<div modal="auth.authenticate" close="auth.authenticate = false" options="{ backdropFade:true, dialogFade:true}">
 		<div class="modal-header">
-			<button type="button" class="close" ng-click="loggedIn=false">&times;</button>
+			<button type="button" class="close" ng-click="auth.authenticate = false">&times;</button>
 			<h4>Login</h4>
 		</div>
 		<div class="modal-body">

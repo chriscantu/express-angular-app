@@ -7,6 +7,7 @@ angular.module('services', ['ngResource'])
 			{
 				login: { method: 'POST', isArray: false, params: { action: 'login' } },
 				logout: { method: 'GET', isArray: false, params: {action: 'logout'} },
+				loggedIn: { method: 'GET', isArray: false, params: { action: 'loggedIn'} },
 				list : { method: 'GET', isArray: false, params: { action: 'users'} }
 			}
 		);

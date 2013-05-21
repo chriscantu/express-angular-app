@@ -31,7 +31,7 @@ var authenticate = function(username, password, done) {
 }
 
 var authSuccess = function( req, res ) {
-	 res.send(200, {'_id': 'myid', firstName: req.body.username});
+	 res.send(200, {'_id': 'myid', firstName: req.body.username, loggedIn: true});
 }
 
 var isAuthenticated = function( req, res, next ) {
@@ -41,6 +41,10 @@ var isAuthenticated = function( req, res, next ) {
 var logout = function( req, res ) {
     req.logout();
     res.send(200, "Logged out!");
+}
+
+var loggedIn = function( req, res ) {
+    ( req.isAuthenticated() ) ? authSuccess(req, res) : res.send(401, {loggedIn: false});
 }
 
 passport.use( new LocalStrategy(authenticate) );
@@ -72,6 +76,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', isAuthenticated, user.list);
+
+app.get('/loggedIn', loggedIn);
 app.post('/login', passport.authenticate('local'), authSuccess);
 app.get('/logout', logout);
 

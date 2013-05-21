@@ -7,15 +7,16 @@ angular.module('directives', [])
 			replace: true,
 			templateUrl: 'directive-templates/auth.html',
 			link: function(scope, element, attrs) {
-				scope.user = { username: '', password: '', firstName: '' };
+
+				User.loggedIn({}, function(data) { scope.user = data }, function(data) { scope.user = data });
 				scope.auth = { invalidLogin: false, authenticated: false };
 
 				scope.authenticate = function() {
 					User.login({username: this.user.username, password: this.user.password}, 
 						function(data){
 							scope.auth = { invalidLogin: false, authenticated: true};
-							scope.loggedIn = false;
-							scope.user.firstName = data.firstName;
+							scope.user = data;
+							scope.auth.authenticate = false;
 						}, 
 						function(){
 							scope.auth = { invalidLogin : true,  authenticated : false };
@@ -26,7 +27,7 @@ angular.module('directives', [])
 
 				scope.logout = function() {
 					User.logout({}, function(){
-						scope.auth.authenticated = false;
+						scope.user.loggedIn = false;
 					})
 				}
 			}
