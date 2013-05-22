@@ -1,5 +1,5 @@
-function HomeCtrl($scope, User) {
-	$scope.user = User.list();
+function HomeCtrl($scope, Blog) {
+	$scope.user = Blog.list();
 }
 
-HomeCtrl.$inject=['$scope', 'User'];
+HomeCtrl.$inject=['$scope', 'Blog'];

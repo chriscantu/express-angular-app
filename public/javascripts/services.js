@@ -11,4 +11,12 @@ angular.module('services', ['ngResource'])
 				list : { method: 'GET', isArray: false, params: { action: 'users'} }
 			}
 		);
+	})
+	.factory('Blog', function($resource) {
+		return $resource('/:action', 
+			{},
+			{
+				list: { method: 'GET', isArray: true, params: {action: 'blog'} }
+			}
+		);
 	});

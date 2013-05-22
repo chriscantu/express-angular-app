@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , blog = require('./routes/blog')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
@@ -76,6 +77,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', isAuthenticated, user.list);
+app.get('/blog', blog.list);
 
 app.get('/loggedIn', loggedIn);
 app.post('/login', passport.authenticate('local'), authSuccess);
