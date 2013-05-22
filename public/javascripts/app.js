@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('light', ['ui.bootstrap','services', 'directives']);
-
-function ListCtrl($scope, User) {
-	$scope.user = User.list();
-}
-
-ListCtrl.$inject=['$scope', 'User'];
+angular.module('light', ['ui.bootstrap','services', 'directives']).
+	config(['$routeProvider', function($routeProvider) {
+		$routeProvider.
+			when('/home', { controller: HomeCtrl, templateUrl: 'partials/home.html'} ).
+			otherwise({ redirectTo: "/home"});
+	}]);
