@@ -1,5 +1,22 @@
 <div class="row-fluid">
 	<div class="span12">
-		<h1>Welcome to Express</h1>	
+		<h1>Welcome to Express</h1>
 	</div>
+</div>
+
+<div class="row-fluid" ng-repeat="blog in blogs">
+	<div class="span12" >
+		<div class="row-fluid">
+			<div class="span12">
+				<h3>{{blog.title}}</h3>	
+			</div>
+			
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<p>{{blog.body}}</p>
+			</div>
+		</div>
+	</div>
+
 </div>
