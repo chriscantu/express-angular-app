@@ -11,6 +11,7 @@
     "jade": "*",
     "ejs": "*",
     "passport": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "github-flavored-markdown": "1.x.x"
   }
 }
