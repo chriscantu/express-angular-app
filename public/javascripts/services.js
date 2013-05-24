@@ -16,7 +16,8 @@ angular.module('services', ['ngResource'])
 		return $resource('/:action', 
 			{},
 			{
-				list: { method: 'GET', isArray: true, params: {action: 'blog'} }
+				list: { method: 'GET', isArray: true, params: {action: 'blog'} },
+				save: { method: 'POST', isArray: false, params: {action: 'blog'} }
 			}
 		);
 	});

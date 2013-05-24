@@ -16,3 +16,7 @@ exports.list = function( req, res ) {
 
 	res.json(200, [ entry ]);
 }
+
+exports.save = function( req, res ) {
+	res.json(200, req.body );
+}
