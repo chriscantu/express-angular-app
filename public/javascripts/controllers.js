@@ -9,7 +9,8 @@ function CreateCtrl($scope, Blog) {
 	$scope.save = function() {
 		Blog.save($scope.blog, function( data ) {
 			$scope.blog.showSuccessMsg = true;
-			console.log(data)
+		}, function(error) {
+			$scope.blog.showErrorMsg = true
 		});
 	}
 }

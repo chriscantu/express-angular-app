@@ -5,6 +5,11 @@
 			Saved new entry '<strong>{{blog.title}}</strong>'
 			<button class="close" ng-click="blog.showSuccessMsg = false">x</button>
 		</div>
+		<div class="alert alert-error" ng-show="blog.showErrorMsg">
+			Unable to save new entry!
+		<button class="close" ng-click="blog.showSuccessMsg = false">x</button>
+		</div>
+
 		<form class="form-horizontal" ng-submit="save()">
 			<div class="control-group">
 				<div class="controls">
