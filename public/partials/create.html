@@ -2,18 +2,18 @@
 	<div class="span12">
 		<h2>Create</h2>
 		<div class="alert alert-success" ng-show="blog.showSuccessMsg">
-			Yay! You just saved
+			Saved new entry '<strong>{{blog.title}}</strong>'
 			<button class="close" ng-click="blog.showSuccessMsg = false">x</button>
 		</div>
 		<form class="form-horizontal" ng-submit="save()">
 			<div class="control-group">
 				<div class="controls">
-					<input type="text" ng-model="blog.title" placeholder="Title" class="input-xxlarge"/>
+					<input type="text" ng-model="blog.title" placeholder="Title" class="input-xxlarge" required/>
 				</div>
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<textarea ng-model="blog.body" placeholder="Blog Entry" class="input-xxlarge" rows="10"></textarea>
+					<textarea ng-model="blog.body" placeholder="Blog Entry" class="input-xxlarge" rows="10" required></textarea>
 				</div>
 			</div>
 			<div class="control-group">

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('directives', [])
-	.directive('ltAuth', function (User) {
+	.directive('ltAuth', function (User, $location) {
 		return {
 			restrict: 'E',
 			replace: true,
@@ -31,6 +31,18 @@ angular.module('directives', [])
 				}
 
 				scope.toggleLogin = function() { scope.auth.showLogin = !scope.auth.showLogin }
+
+				scope.$watch( function() {
+					return $location.path();
+				}, function(newValue, oldValue){
+					var links = document.querySelectorAll("div.navbar div.navbar-inner ul.nav li")
+					
+					for ( var i = 0; i < links.length - 2; i++) {
+						var href = links[i].firstElementChild;
+						var hash = href.getAttribute('href').substring(1);
+						( hash == newValue ) ? links[i].className = 'active' : links[i].className = ''
+					}					
+				});
 			}
 		}
 	})
@@ -41,3 +53,4 @@ angular.module('directives', [])
 			templateUrl: "directive-templates/navBar.html"
 		}
 	});
+
