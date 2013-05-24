@@ -1,6 +1,8 @@
-var ghm = require('github-flavored-markdown')
+var Showdown = require('showdown')
+var converter = new Showdown.converter();
 
 exports.list = function( req, res ) {
+
 	var entry = { 
 		title: "Hello",
 		body: "#####Subtitle \nThis is just a test",
@@ -10,7 +12,7 @@ exports.list = function( req, res ) {
 		isMarkdown: true
 	}
 
-	entry.body = ( entry.isMarkdown ) ? ghm.parse( entry.body ) : entry.body;
+	entry.body = ( entry.isMarkdown ) ? converter.makeHtml( entry.body ) : entry.body;
 
 	res.json(200, [ entry ]);
 }

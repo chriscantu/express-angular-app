@@ -12,6 +12,6 @@
     "ejs": "*",
     "passport": "*",
     "passport-local": "*",
-    "github-flavored-markdown": "1.x.x"
+    "showdown": "x"
   }
 }
