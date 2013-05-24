@@ -1,4 +1,9 @@
 <div>
+	<ul ng-show="user.loggedIn" class="nav">
+		<li>
+			<a ng-href="#/create">Create</a>
+		</li>
+	</ul>
 	<ul class="nav pull-right">
 		<li ng-hide="user.loggedIn" class="active">
 			<a ng-click="toggleLogin()" class="pull-right" href="" ng-model="auth.showLogin">Login</a>
