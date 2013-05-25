@@ -1,23 +1,22 @@
 'use strict';
 
 angular.module('services', ['ngResource'])
-	.factory('User', function($resource) {
-		return $resource('/:action', 
+	.factory('User', function ($resource) {
+		return $resource('/:action',
 			{},
 			{
 				login: { method: 'POST', isArray: false, params: { action: 'login' } },
 				logout: { method: 'GET', isArray: false, params: {action: 'logout'} },
 				loggedIn: { method: 'GET', isArray: false, params: { action: 'loggedIn'} },
 				list : { method: 'GET', isArray: false, params: { action: 'users'} }
-			}
-		);
+			});
 	})
-	.factory('Blog', function($resource) {
-		return $resource('/:action', 
+	.factory('Blog', function ($resource) {
+		return $resource('/:action/:id',
 			{},
 			{
 				list: { method: 'GET', isArray: true, params: {action: 'blog'} },
-				save: { method: 'POST', isArray: false, params: {action: 'blog'} }
-			}
-		);
+				save: { method: 'POST', isArray: false, params: {action: 'blog'} },
+                get: { method: 'GET', isArra: false, params: {action: 'blog'} }
+			});
 	});

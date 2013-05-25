@@ -78,6 +78,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', isAuthenticated, user.list);
 app.get('/blog', blog.list);
+app.get('/blog/:title', isAuthenticated, blog.show);
 app.post('/blog', isAuthenticated, blog.save)
 
 app.get('/loggedIn', loggedIn);
