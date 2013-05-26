@@ -5,7 +5,7 @@ var converter = new Showdown.converter();
 exports.list = function (req, res) {
 
 	var entry = {
-		title: "Hello",
+		title: "Hello There",
 		body: "#####Subtitle \nThis is just a test",
 		dateCreated: new Date(),
 		lastUpdated: new Date(),
