@@ -8,7 +8,11 @@ angular.module('directives', [])
 			templateUrl: 'directive-templates/auth.html',
 			link: function (scope, element, attrs) {
 
-				User.loggedIn({}, function (data) { scope.user = data; }, function (data) { scope.user = data; });
+				User.loggedIn({}, function (data) {
+                        scope.user = data;
+                    }, function (data) {
+                        scope.user = data;
+                    });
 				scope.auth = { invalidLogin: false, showLogin: false };
 
 				scope.authenticate = function () {

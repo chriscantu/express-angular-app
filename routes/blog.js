@@ -25,3 +25,8 @@ exports.show = function (req, res) {
 exports.save = function (req, res) {
 	res.json(200, req.body);
 };
+
+exports.delete = function (req, res) {
+    console.log(req.title);
+    res.json(200, { msg: req.title} );
+};

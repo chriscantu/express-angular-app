@@ -80,6 +80,7 @@ app.get('/users', isAuthenticated, user.list);
 app.get('/blog', blog.list);
 app.get('/blog/:title', isAuthenticated, blog.show);
 app.post('/blog', isAuthenticated, blog.save);
+app.delete('/blog/:title', isAuthenticated, blog.delete);
 
 app.get('/loggedIn', loggedIn);
 app.post('/login', passport.authenticate('local'), authSuccess);

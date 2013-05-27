@@ -21,7 +21,7 @@ angular.module('services', ['ngResource'])
                 user.isLoggedIn = !user.isLoggedIn;
                 handler(message.user);
             });
-        }
+        };
 
         return user;
 	})
@@ -31,6 +31,7 @@ angular.module('services', ['ngResource'])
 			{
 				list: { method: 'GET', isArray: true, params: {action: 'blog'} },
 				save: { method: 'POST', isArray: false, params: {action: 'blog'} },
-                get: { method: 'GET', isArra: false, params: {action: 'blog'} }
+                get: { method: 'GET', isArray: false, params: {action: 'blog'} },
+                'delete': { method: 'DELETE', isArray: false, params: { action: 'blog'} }
 			});
 	});

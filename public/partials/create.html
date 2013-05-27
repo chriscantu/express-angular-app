@@ -7,7 +7,7 @@
 		</div>
 		<div class="alert alert-error" ng-show="blog.showErrorMsg">
 			Unable to save new entry!
-            <button class="close" ng-click="blog.showSuccessMsg = false">x</button>
+            <button class="close" ng-click="blog.showErrorMsg = false">x</button>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 well">
@@ -17,6 +17,7 @@
 					<div class="control-group">
 						<div class="controls">
 							<button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-danger" ng-click="delete(blog.title)">Delete</button>
 						</div>
 					</div>
 				</form>
