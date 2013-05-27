@@ -7,7 +7,10 @@
 	<div class="span12" >
 		<div class="row-fluid">
 			<div class="span12">
-				<h3><a ng-href="/#/edit/{{ blog.title | underscore}}">{{blog.title}}</a></h3>
+                <h3>
+                    <a ng-show="user.isLoggedIn" ng-href="/#/edit/{{ blog.title | underscore }}">{{blog.title}}</a>
+                    <div ng-hide="user.isLoggedIn">{{blog.title}}</div>
+                </h3>
 			</div>
 		</div>
 		<div class="row-fluid">

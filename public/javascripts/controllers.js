@@ -1,10 +1,16 @@
 'use strict';
 
-function HomeCtrl($scope, Blog) {
+function HomeCtrl($scope, Blog, User) {
 	$scope.blogs = Blog.list();
+
+    User.onAuthentication($scope, function(){
+        $scope.user = { isLoggedIn: User.isLoggedIn };
+    });
+
+    $scope.user = { isLoggedIn: User.isLoggedIn };
 }
 
-HomeCtrl.$inject = ['$scope', 'Blog'];
+HomeCtrl.$inject = ['$scope', 'Blog', 'User'];
 
 function CreateCtrl($scope, Blog) {
     $scope.page = {title : "Create"};

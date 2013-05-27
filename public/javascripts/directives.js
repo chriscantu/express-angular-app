@@ -16,6 +16,7 @@ angular.module('directives', [])
 						function (data) {
 							scope.auth = { invalidLogin: false, showLogin: false};
 							scope.user = data;
+                            User.userAuthenticated(data);
 						},
 						function () {
 							scope.auth = { invalidLogin : true,  showLogin : true };
@@ -26,6 +27,7 @@ angular.module('directives', [])
 				scope.logout = function () {
 					User.logout({}, function () {
 						scope.user.loggedIn = false;
+                        User.userAuthenticated({});
 					});
 				};
 
@@ -71,4 +73,3 @@ angular.module('directives', [])
             }
         }
     });
-
