@@ -58,7 +58,7 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.favicon());
 app.use(express.compress());
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneYear }));
+app.use(express.static(path.join(__dirname, 'app'), { maxAge: oneYear }));
 
 app.use(express.logger('dev'));
 
