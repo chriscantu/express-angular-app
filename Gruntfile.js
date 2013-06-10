@@ -45,7 +45,7 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 9000,
+        port: 3000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost'
       },
@@ -257,10 +257,34 @@ module.exports = function (grunt) {
           ]
         }]
       }
+    },
+
+    express: {
+      files:  [ 'app/**/*.*', 'routes/*.js', 'app.js' ],
+      tasks:  [ 'express:dev', 'livereload' ],
+      dev: {
+        options: {
+          script: 'app.js'
+        } 
+      },
+      prod: {
+        options: {
+          script: 'path/to/prod/server.js'
+        }
+      },
+      test: {
+        options: {
+          script: 'app.js'
+        }
+      }
     }
   });
 
+
   grunt.renameTask('regarde', 'watch');
+
+  grunt.loadNpmTasks('grunt-express-server');
+  grunt.registerTask('start', [ 'express:dev', 'livereload-start', 'open', 'watch' ]);
 
   grunt.registerTask('server', [
     'clean:server',

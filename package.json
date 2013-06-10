@@ -13,7 +13,7 @@
     "passport": "*",
     "passport-local": "*",
     "showdown": "*"
-    },
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.0",
@@ -36,7 +36,8 @@
     "grunt-open": "~0.2.0",
     "matchdep": "~0.1.1",
     "grunt-google-cdn": "~0.1.1",
-    "grunt-ngmin": "~0.0.2"
+    "grunt-ngmin": "~0.0.2",
+    "grunt-express-server": "~0.4.0"
   },
   "engines": {
     "node": ">=0.8.0"
